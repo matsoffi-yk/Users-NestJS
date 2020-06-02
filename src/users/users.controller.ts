@@ -17,7 +17,6 @@ export class UsersController {
         @Body() createUser: Users,
         @Res() res
     ) {
-        // console.log(createUser)
         const users = await this.usersService.addUser(createUser)
         return res.status(HttpStatus.OK).json(users)
     }

@@ -6,19 +6,19 @@ export class UsersService {
     users: Users[] = [
         {
             "id": 1,
-            "name": "n",
-            "surname": "s",
-            "nickname": "nn",
+            "name": "name",
+            "surname": "surname",
+            "nickname": "nickname",
             "age": 0,
-            "phoneNumber": "p",
-            "line": "l",
-            "email": "e",
+            "phoneNumber": "0123456789",
+            "line": "line",
+            "email": "email@email.com",
             "address": {
                 "houseNo": "1",
                 "village": "2",
-                "subDistrict": "s",
-                "district": "d",
-                "province": "p",
+                "subDistrict": "subDistrict",
+                "district": "district",
+                "province": "province",
                 "postalCode": "12345",
             }
         },
@@ -49,6 +49,7 @@ export class UsersService {
             else {
                 createUser.id = this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1;
                 this.users.push(createUser)
+                // console.log(createUser.address.houseNo)
                 return this.users[createUser.id - 1];
             }
         } catch (error) {
