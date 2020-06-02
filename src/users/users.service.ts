@@ -31,7 +31,7 @@ export class UsersService {
             }
             else {
                 // console.log(`${this.users[0].address}`)
-                return this.users;
+                return { success: true, data: this.users };
             }
         } catch (error) {
             throw new NotFoundException({
@@ -50,7 +50,7 @@ export class UsersService {
                 createUser.id = this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1;
                 this.users.push(createUser)
                 // console.log(createUser.address.houseNo)
-                return this.users[createUser.id - 1];
+                return { success: true, data: this.users[createUser.id - 1] };
             }
         } catch (error) {
             throw new NotFoundException({
@@ -69,10 +69,10 @@ export class UsersService {
                 if (this.users.find(user => user.id === id)) {
                     updateUser.id = this.users[id - 1].id
                     this.users[id - 1] = updateUser;
-                    return this.users[id - 1];
+                    return { success: true, data: this.users[id - 1] };
                 }
                 else {
-                    return `Not found id: ${id}`
+                    return { success: true, data: `Not found id: ${id}` }
                 }
 
             }
@@ -92,10 +92,10 @@ export class UsersService {
             else {
                 if (this.users.find(data => data.id === id)) {
                     this.users = this.users.filter(data => data.id !== id)
-                    return `id: ${id} Deleted`;
+                    return { success: true, data: `id: ${id} Deleted` };
                 }
                 else {
-                    return `Not found id: ${id}`
+                    return { success: true, data: `Not found id: ${id}` }
                 }
 
             }
